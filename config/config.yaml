@@ -1,0 +1,18 @@
+# Configuration settings for Snakemake
+
+# Relative path where your samples are found
+samples: config/samples.csv
+
+# Path to your raw sequencing reads  
+short_reads: /nfs/turbo/umms-esnitkin/database/k2_standard_eupath_20201202/
+
+# Directory prefix where the outputs will be saved to
+# Rename this to your preferred naming convention with this format:year-month-day_Project_Name_
+prefix: 2025-07-23_Project_NG_probe_
+
+# Optional to change this unless you have a kraken database of your own
+kraken_db: /nfs/turbo/umms-esnitkin/database/k2_standard_eupath_20201202/
+
+# QC thresholds?
+
+# Feel free to remove the comments after you have customized the file.
