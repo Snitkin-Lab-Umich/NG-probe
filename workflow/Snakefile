@@ -1,0 +1,32 @@
+# Snakefile for NG CaptureSeq Evaluation Pipeline
+
+# Author: Dhatri Badri
+configfile: "config/config.yaml"
+
+import pandas as pd
+import os
+
+samples_df = pd.read_csv(config["samples"])
+SAMPLES = list(samples_df['sample_id'])
+PREFIX = config["prefix"]
+SHORT_READS_DIR = config["short_reads"]
+
+rule all:
+    input:
+        expand("results/{prefix}/bmtagger/{sample}_R1_clean.fastq.gz", prefix=PREFIX, sample=SAMPLES),
+        expand("results/{prefix}/dehumanizer/{sample}_R1_clean.fastq.gz", prefix=PREFIX, sample=SAMPLES),
+        expand("results/{prefix}/fastp/{sample}/{sample}_R1_trim_paired.fastq.gz", prefix=PREFIX, sample=SAMPLES),
+        expand("results/{prefix}/cutadapt/{sample}/{sample}_R1_trimmed.fastq.gz", prefix=PREFIX, sample=SAMPLES),
+        # expand("results/{prefix}/kraken2/{{sample}}.report", prefix=PREFIX, sample=SAMPLES),
+        # expand("results/{prefix}/centrifuge/{{sample}}.report", prefix=PREFIX, sample=SAMPLES),
+        # expand("results/{prefix}/bowtie2/{{sample}}.bam", prefix=PREFIX, sample=SAMPLES),
+        # expand("results/{prefix}/bwa/{{sample}}.bam", prefix=PREFIX, sample=SAMPLES),
+        # expand("results/{prefix}/multiqc/multiqc_report.html", prefix=PREFIX),
+    
+
+####### rules #################
+include: "rules/host_depletion.smk"
+include: "rules/trimming.smk"
+# include: "rules/qc.smk"
+# include: "rules/mapping_taxonomy.smk"
+# include: "rules/read_mapping.smk"
