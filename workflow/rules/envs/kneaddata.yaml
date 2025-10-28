@@ -1,0 +1,7 @@
+name: kneaddata
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - kneaddata
