@@ -1,8 +1,6 @@
-# Author: Dhatri Badri
-
+# This rule performs quality control on raw sequencing reads using FastQC.
 rule quality_raw:
     input:
-        # r1_trimmed = lambda wildcards: expand(f"results/{wildcards.prefix}/trimmomatic/{wildcards.sample}/" + f"{wildcards.sample}_R1_trim_paired.fastq.gz"), # to ensure this runs aftrer DAG evaluates
         r1 = lambda wildcards: os.path.join(SHORT_READS_DIR, f"{wildcards.sample}_R1.fastq.gz"),
         r2 = lambda wildcards: os.path.join(SHORT_READS_DIR, f"{wildcards.sample}_R2.fastq.gz"),
     output:
@@ -12,6 +10,8 @@ rule quality_raw:
         "logs/{prefix}/quality_raw/{sample}/{sample}.log"
     params:
         outdir = "results/{prefix}/quality_raw/{sample}/{sample}"
+    benchmark:
+        "benchmarks/{prefix}/quality_raw/{sample}.benchmark.txt"
     singularity:
         "docker://staphb/fastqc:0.12.1"
     shell:
