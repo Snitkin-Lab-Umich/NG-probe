@@ -1,4 +1,3 @@
-
 # This rule performs host depletion using kneaddata to clean the input reads before further processing.
 # Download database first: kneaddata_database --download human_genome bowtie2 /nfs/turbo/umms-esnitkin/database/human_db # Downloaded July 29,2025
 rule kneaddata: 
