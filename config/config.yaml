@@ -4,15 +4,39 @@
 samples: config/samples.csv
 
 # Path to your raw sequencing reads  
-short_reads: /nfs/turbo/umms-esnitkin/database/k2_standard_eupath_20201202/
+short_reads: /scratch/esnitkin_root/esnitkin1/dhatrib/NG-probe/NG_probe_enrich_batch_1
 
 # Directory prefix where the outputs will be saved to
 # Rename this to your preferred naming convention with this format:year-month-day_Project_Name_
-prefix: 2025-07-23_Project_NG_probe_
+prefix: 2025-08-25_batch1_NG-probe
+
+# Human database for kneaddata. Do not alter path
+human_db: /nfs/turbo/umms-esnitkin/database/human_db
 
 # Optional to change this unless you have a kraken database of your own
 kraken_db: /nfs/turbo/umms-esnitkin/database/k2_standard_eupath_20201202/
 
-# QC thresholds?
+# Reference genome indices and databases. Change paths if you have your own indices/databases
+bowtie2_index: /scratch/esnitkin_root/esnitkin1/dhatrib/NG-probe/3000_ref_genome_renamed/3000_profile_reference_combined_renamed_v3
+
+bowtie2_index_for_coverage: /scratch/esnitkin_root/esnitkin1/dhatrib/NG-probe/bowtie2_index/SAMEA12279355
+
+# SKANI database path
+skani_db: /nfs/turbo/umms-esnitkin/database/skani/gtdb_skani_database_ani
+
+# Genome size for species in your sample. Change if needed
+genome_size: 2000000
+
+# Adapter trimming settings. 
+adapter_file: config/adapters/combined_Adaptors.fa
+seed_mismatches: 2
+palindrome_clipthreshold: 30
+simple_clipthreshold: 10
+minadapterlength: 8
+keep_both_reads: true
+window_size: 4
+window_size_quality: 20
+minlength: 40
+headcrop_length: 0
 
 # Feel free to remove the comments after you have customized the file.
