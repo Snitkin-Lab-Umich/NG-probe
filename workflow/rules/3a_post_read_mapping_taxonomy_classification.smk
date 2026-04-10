@@ -5,7 +5,7 @@ rule kraken2_post_mapping:
     r2_bowtie2 = "results/{prefix}/bowtie2/{sample}/{sample}_mapped_R2.fastq.gz",
   output:
     report_bowtie2 = "results/{prefix}/kraken2/post-binning/{sample}/{sample}_bowtie2.tsv",
-    output_bowtie2 = "results/{prefix}/kraken2/post-binning/{sample}/{sample}_bowtie2.out",
+    output_bowtie2 = temp("results/{prefix}/kraken2/post-binning/{sample}/{sample}_bowtie2.out"),
   params:
     db = config["kraken_db"]
   benchmark:

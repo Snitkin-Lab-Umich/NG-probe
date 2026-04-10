@@ -55,7 +55,7 @@ rule bowtie2:
 
 rule merge_cov_summary:
     input:
-        bowtie2_rows = "results/{prefix}/bowtie2/{sample}/{sample}_coverage_row.tsv",
+        bowtie2_rows = expand("results/{prefix}/bowtie2/{sample}/{sample}_coverage_row.tsv", prefix=PREFIX, sample=SAMPLES),
     output:
         bowtie2_summary = "results/{prefix}/{prefix}_Report/bowtie2_coverage_summary.tsv",
     shell:

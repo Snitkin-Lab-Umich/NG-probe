@@ -395,8 +395,8 @@ def Summary(outdir, prefix):
 
 rule generate_reports:
     input:
-        kraken_post_bin = lambda wc: expand(f"results/{prefix}/kraken2/post-binning/{sample}/{sample}_bowtie2.tsv",prefix=PREFIX, sample=SAMPLES),
-        bowtie2_report = lambda wc: expand(f"results/{prefix}/bowtie2/{sample}/{sample}_bowtie2_full_alignment_info.tsv",prefix=PREFIX, sample=SAMPLES),
+        kraken_post_bin = expand("results/{prefix}/kraken2/post-binning/{sample}/{sample}_bowtie2.tsv",prefix=PREFIX, sample=SAMPLES),
+        bowtie2_report = expand("results/{prefix}/bowtie2/{sample}/{sample}_bowtie2_full_alignment_info.tsv",prefix=PREFIX, sample=SAMPLES),
     output:
         post_map_bowtie2_kraken_final_out = "results/{prefix}/{prefix}_Report/{prefix}_post_map_Final_Kraken_Report.csv",
         pre_map_kraken_final_out = "results/{prefix}/{prefix}_Report/{prefix}_pre_map_Final_Kraken_Report.csv",

@@ -5,7 +5,7 @@ rule kraken2_pre_mapping:
         r2 = lambda wc: os.path.join(SHORT_READS_DIR, f"{wc.sample}_R2.fastq.gz"),
     output:
         report = "results/{prefix}/kraken2/pre-binning/{sample}/{sample}.tsv",
-        output = "results/{prefix}/kraken2/pre-binning/{sample}/{sample}.out"
+        output = temp("results/{prefix}/kraken2/pre-binning/{sample}/{sample}.out")
     params:
         db = config["kraken_db"]
     benchmark:

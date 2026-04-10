@@ -204,7 +204,6 @@ rule quast:
     shell:
         """
         quast.py {input.spades_l1000_assembly_bowtie2} -o {params.outdir_bowtie2} --contig-thresholds 0,1000,5000,10000,25000,50000
-        quast.py {input.spades_l1000_assembly_bwa} -o {params.outdir_bwa} --contig-thresholds 0,1000,5000,10000,25000,50000
         """
 
 # MLST typing using MLST
