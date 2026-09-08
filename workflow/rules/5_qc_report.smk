@@ -364,7 +364,6 @@ def Summary(outdir, prefix):
     # Merge on sample
     df = df_bowtie2_kraken
     df = df.merge(df_bowtie2_mapped, on='sample', how='left')
-    df = df.merge(df_bowtie2_kraken, on='sample', how='left')
     df = df.merge(df_pre_map_kraken, on='sample', how='left')
     df = df.merge(df_kneaddata_results, on='sample', how='left')
     df = df.merge(df_busco, on='sample', how='left')
